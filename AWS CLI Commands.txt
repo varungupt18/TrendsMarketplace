@@ -1,0 +1,26 @@
+
+*Start model*
+Command used to start the chest_xray.2022-04-30T12.43.32 model.
+
+
+aws rekognition start-project-version \
+  --project-version-arn "arn:aws:rekognition:us-east-1:408197496234:project/chest_xray/version/chest_xray.2022-04-30T12.43.32/1651340612201" \
+  --min-inference-units 1 \
+  --region us-east-1
+
+
+*Analyze image*
+Command used to use analyze an image with the chest_xray.2022-04-30T12.43.32 model. 
+
+
+aws rekognition detect-custom-labels \
+  --project-version-arn "arn:aws:rekognition:us-east-1:408197496234:project/chest_xray/version/chest_xray.2022-04-30T12.43.32/1651340612201" \
+  --image '{"S3Object": {"Bucket": "imagedataset1","Name": "rekog"}}' \
+  --region us-east-1
+ 
+	
+*Stop model*
+
+aws rekognition stop-project-version \
+  --project-version-arn "arn:aws:rekognition:us-east-1:408197496234:project/chest_xray/version/chest_xray.2022-04-30T12.43.32/1651340612201" \
+  --region us-east-1
